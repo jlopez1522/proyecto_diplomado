@@ -1,16 +1,16 @@
 <?php
 
 //Ip de la pc servidor de base de datos
-define("DB_HOST", "10.130.51.122:3306");
+define("DB_HOST", "localhost:3306");
 
 //Nombre de la base de datos
 define("DB_NAME", "ingsoft");
 
 //Usuario de la base de datos
-define("DB_USERNAME", "wadmon");
+define("DB_USERNAME", "test");
 
 //Contraseña del usuario de la base de datos
-define("DB_PASSWORD", "M1ndCl0ud2012$");
+define("DB_PASSWORD", "test");
 
 //Definimos la codificacion de los caracteres
 define("DB_ENCODE", "utf8");

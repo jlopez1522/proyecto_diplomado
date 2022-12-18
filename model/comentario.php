@@ -14,8 +14,8 @@ Class Comentario
 	//Implementamos un metodo para insertar registros
 	public function insertar($nombre_persona, $asunto, $cuerpo)
 	{
-		$sql = "INSERT INTO blog (`fecha_registro`,`nombre_persona`, `asunto`, `cuerpo`)
-		VALUES ('','$nombre_persona', '$asunto', '$cuerpo')";
+		$sql = "INSERT INTO blog (`nombre_persona`, `asunto`, `cuerpo`)
+		VALUES ('$nombre_persona', '$asunto', '$cuerpo')";
 
 		return ejecutarConsulta($sql);
 	}

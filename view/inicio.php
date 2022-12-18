@@ -17,12 +17,13 @@
     <header>
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="inicio.html">IngSoft</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
                 aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                <a class="navbar-brand" href="inicio.html">IngSoft</a>
+                
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item active">
                         <a class="nav-link" href="inicio.php">Home <span class="sr-only">(current)</span></a>
@@ -56,13 +57,13 @@
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img class="d-block w-100" src="./../assets/images/ingenieria.png" alt="introduccion">
+                            <img class="d-block w-100" height="500px" src="./../assets/images/ingenieria.png" alt="introduccion">
                         </div>
                         <div class="carousel-item">
-                            <img class="d-block w-100" src="./../assets/images/lenguajes.png" alt="ingenieria">
+                            <img class="d-block w-100" height="500px" src="./../assets/images/lenguajes.png" alt="ingenieria">
                         </div>
                         <div class="carousel-item">
-                            <img class="d-block w-100" src="./../assets/images/codigo.png" alt="lenguajes">
+                            <img class="d-block w-100" height="500px" src="./../assets/images/codigo.png" alt="lenguajes">
                         </div>
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">

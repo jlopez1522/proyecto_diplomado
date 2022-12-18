@@ -1,3 +1,9 @@
+<?php
+// Start the session
+    session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,12 +23,13 @@
     <header>
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="inicio.html">IngSoft</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
                 aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                <a class="navbar-brand" href="inicio.html">IngSoft</a>
+                
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item">
                         <a class="nav-link" href="inicio.php">Home <span class="sr-only">(current)</span></a>
@@ -34,11 +41,22 @@
                         <a class="nav-link" href="blog.php">Blog</a>
                     </li>
                 </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Lenguajes, Framework, etc."
-                        aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+
+                <?php
+                    if($_SESSION){
+                ?>
+                    <button class="btn btn-danger" onclick="logout('.$reg->id.')">Cerrar Sesion</button>
+                <?php
+                    }else{
+                ?>
+                <form class="form-inline my-2 my-lg-0" name="login" id="login" method="POST">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Usuario" name="user" id="user" aria-label="Search">
+                    <input class="form-control mr-sm-2" type="password" placeholder="Clave" name="pass" id="pass" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Ingresar</button>
                 </form>
+                <?php
+                    }
+                ?>
             </div>
         </nav>
         <!-- Navbar -->
@@ -55,46 +73,39 @@
                 <hr class="my-4">
                 <p>A continuacion encontrara los comentarios</p>
 
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                        <th scope="col">-</th>
-                        <th scope="col">Fecha</th>
-                        <th scope="col">Nombre Completo</th>
-                        <th scope="col">Asunto</th>
-                        <th scope="col">Comentario</th>
-                        </tr>
-                    </thead>
-                    <tbody id="permisos">
-
-                    </tbody>
-                </table>
+                <div id="permisos">
+                </div>
 
             </div>
 
         </div>
 
-        <form name="formulario" id="formulario" method="POST">
+        <div class="col">
 
-            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12" >
-                <label>Nombre Completo(*):</label>
-                <input type="text" class="form-control" name="nombre_persona" id="nombre_persona" maxlength="100" placeholder="Nombre Completo" required>
-            </div>
+            <form name="formulario" id="formulario" method="POST">
 
-            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12" >
-                <label>Asunto(*):</label>
-                <input type="text" class="form-control" name="asunto" id="asunto" maxlength="20" placeholder="Asunto" required>
-            </div>
-            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12" >
-                <label>Comentario:</label>
-                <textarea class="form-control" name="cuerpo" id="cuerpo" maxlength="20" placeholder="Comentarios" rows="10" required></textarea>
-            </div>
-            
-            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <button class="btn btn-primary" type="submit" id="btnGuardar" > <i class="fa fa-save"> </i> Guardar </button>
-                <button class="btn btn-danger" onclick="cancelarform()" type="button" id="btnCancelar" > <i class="fa fa-arrow-circle-left"> </i> Cancelar </button>
-            </div>
-        </form>
+                <h3 class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Agrega un comentario!</h3>
+
+                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6" >
+                    <label>Nombre Completo(*):</label>
+                    <input type="text" class="form-control" name="nombre_persona" id="nombre_persona" maxlength="100" placeholder="Nombre Completo" required>
+                </div>
+
+                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6" >
+                    <label>Asunto(*):</label>
+                    <input type="text" class="form-control" name="asunto" id="asunto" maxlength="20" placeholder="Asunto" required>
+                </div>
+                <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+                    <label>Comentario(*):</label>
+                    <textarea class="form-control" name="cuerpo" id="cuerpo" maxlength="400" placeholder="Comentarios" rows="10" required></textarea>
+                </div>
+                
+                <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <button class="btn btn-primary" type="submit" id="btnGuardar" > <i class="fa fa-save"> </i> Guardar </button>
+                    <button class="btn btn-danger" onclick="cancelarform()" type="button" id="btnCancelar" > <i class="fa fa-arrow-circle-left"> </i> Cancelar </button>
+                </div>
+            </form>
+        </div>
     </div>
     <!-- body content-->
 
@@ -204,6 +215,6 @@
 <script type="text/javascript" src="../assets/js/bootbox.min.js"></script>
 <script type="text/javascript" src="../assets/js/bootstrap-select.min.js"></script>
 
-<script type="text/javascript" src="scripts/comentario.js"> </script>
+<script type="text/javascript" src="scripts/blog.js"> </script>
 
 </html>

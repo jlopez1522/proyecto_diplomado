@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once "../model/comentario.php";
 
 $comentario=new Comentario();
@@ -31,15 +32,18 @@ switch ($_GET["op"]){
 		$a = '';
 
 		while ($reg=$rspta->fetch_object()) {
-
-
-			$a .='<tr>';
-			$a .= ($reg->id)?'<td><button class="btn btn-danger" onclick="eliminar('.$reg->id.')"><i class="fa fa-close"> </i></button>':'<button class="btn btn-danger" onclick="eliminar('.$reg->id.')"><i class="fa fa-close"> </i></button></td>';
-			$a .='<td>'.$reg->fecha_registro.'</td>';
-			$a .='<td>'.$reg->nombre_persona.'</td>';
-			$a .='<td>'.$reg->asunto.'</td>';
-			$a .='<td>'.$reg->cuerpo.'</td>';
-			$a .='</tr>';
+			$a .='<div class="card text">';
+			$a .='<div class="card-header"> <b>Nuevo comentario de : '.$reg->nombre_persona.'</b></div>';
+			$a .='<div class="card-body">';
+			$a .='<h5 class="card-title">'.$reg->asunto.'</h5>';
+			$a .='<p class="card-text">'.$reg->cuerpo.'</p>';
+			if($_SESSION["user_profile"] == 'A'){
+				$a .=($reg->id)?'<button class="btn btn-danger" onclick="eliminar('.$reg->id.')"><i class="fa fa-close"> </i></button>':'<button class="btn btn-danger" onclick="eliminar('.$reg->id.')"><i class="fa fa-close"> </i></button>';
+			
+			}			
+			$a .='</div>';
+			$a .='<div class="card-footer text-muted"> Fecha : '.$reg->fecha_registro.'</div>';
+			$a .='</div><br>';
 
 		}
 
